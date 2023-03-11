@@ -1,19 +1,10 @@
 package coffemachine.coffee_machine;
 
 import jakarta.persistence.Entity;
-
-import javax.persistence.Id;
+import jakarta.persistence.Id;
 
 @Entity
 public class CoffeeMachineSettingData {
-    private String P_deviceId = "COFFEE_MACHINE_HOME"; // INVARIANT
-    private int P_voltage = 220;		    // Working voltage	integer	208 <= [VAC] =< 240
-    private int P_frequency = 50;		    // Working frequency	integer	= 50[Hz] OR 60[Hz]
-    private float P_current = 30;			// Working current	Floating point	<= 30 [A]
-    private float P_FinalTemperature =93;   // Final Temperature	of Coffee	91 <= [C] =< 95.5
-    private float P_WaterWeight=300;		// Approximate weight of Water	100 <= [GR] =< 500
-    private float P_CoffeeWeight=300;		// Approximate weight of Coffee Beans	5 <= [GR] =< 50
-    private boolean P_dimensions=true ;	    // Existence of Coffee Hopper
 
     @Id
     private String deviceId;        // INVARIANT A unique device ID
@@ -24,6 +15,17 @@ public class CoffeeMachineSettingData {
     private float WaterWeight;		// Approximate weight of Water	100 <= [GR] =< 500
     private float CoffeeWeight;	    // Approximate weight of Coffee	Beans 5 <= [GR] =< 50
     private boolean dimensions;	    // Existence of Coffee Hopper
+
+    private String P_deviceId = "COFFEE_MACHINE_HOME"; // INVARIANT
+    private int P_voltage = 220;		    // Working voltage	integer	208 <= [VAC] =< 240
+    private int P_frequency = 50;		    // Working frequency	integer	= 50[Hz] OR 60[Hz]
+    private float P_current = 30;			// Working current	Floating point	<= 30 [A]
+    private float P_FinalTemperature =93;   // Final Temperature	of Coffee	91 <= [C] =< 95.5
+    private float P_WaterWeight=300;		// Approximate weight of Water	100 <= [GR] =< 500
+    private float P_CoffeeWeight=300;		// Approximate weight of Coffee Beans	5 <= [GR] =< 50
+    private boolean P_dimensions=true ;	    // Existence of Coffee Hopper
+
+
 
     public CoffeeMachineSettingData () {
 

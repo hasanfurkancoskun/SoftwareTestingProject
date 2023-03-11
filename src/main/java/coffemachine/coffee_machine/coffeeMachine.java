@@ -13,16 +13,17 @@ public class coffeeMachine {
     }
     public static enum Event {
         Power_on,
-        Ready_to_work,
-        Coffee_ready,
-        Failure_fixed,
+        Power_off,
         Failure,
-        Power_off  // init state
+        Failure_fixed,
+        Button_click,
+        Coffee_ready
+
     };
     public static enum State {
         POWER_OFF,
-        POWER_PRESENT,
-        COFFE_MACHINE_WORKING,
+        STAND_BY,
+        WORKING,
         TROUBLE
     }
     private State myState;
@@ -50,24 +51,27 @@ public class coffeeMachine {
                 // only following event(s) are valid: power_on
                 switch (e) {
                     case Power_on:
-                        transition_to(State.POWER_PRESENT);
+                        transition_to(State.STAND_BY);
                         break;
                 }
                 break;
-            case POWER_PRESENT:
+            case STAND_BY:
                 // only following event(s) are valid: Ready_to_work
                 switch (e) {
-                    case Ready_to_work:
-                        transition_to(State.COFFE_MACHINE_WORKING);
+                    case Button_click:
+                        transition_to(State.WORKING);
                         break;
                 }
                 break;
 
-            case COFFE_MACHINE_WORKING:
+            case WORKING:
                 switch (e) {
                     // only following event(s) are valid: stop_charging
                     case Coffee_ready:
-                        transition_to(State.POWER_PRESENT);
+                        transition_to(State.STAND_BY);
+                        break;
+                    case Button_click:
+                        transition_to(State.POWER_OFF);
                         break;
                 }
                 break;
@@ -75,7 +79,7 @@ public class coffeeMachine {
                 switch (e) {
                     // only following event(s) are valid: failer_fixed
                     case Failure_fixed:
-                        transition_to(State.POWER_PRESENT);
+                        transition_to(State.STAND_BY);
                         break;
                 }
                 break;

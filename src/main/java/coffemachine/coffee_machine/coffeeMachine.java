@@ -46,6 +46,9 @@ public class coffeeMachine {
         if (e == Event.Power_off) {
             transition_to(State.POWER_OFF);
         }
+        if(e== Event.Coffee_ready){
+            transition_to(State.STAND_BY);
+        }
         switch (myState) {
             case POWER_OFF:
                 // only following event(s) are valid: power_on
@@ -56,20 +59,15 @@ public class coffeeMachine {
                 }
                 break;
             case STAND_BY:
-                // only following event(s) are valid: Ready_to_work
                 switch (e) {
                     case Button_click:
                         transition_to(State.WORKING);
                         break;
                 }
                 break;
-
             case WORKING:
                 switch (e) {
-                    // only following event(s) are valid: stop_charging
-                    case Coffee_ready:
-                        transition_to(State.STAND_BY);
-                        break;
+
                     case Button_click:
                         transition_to(State.POWER_OFF);
                         break;
@@ -77,9 +75,8 @@ public class coffeeMachine {
                 break;
             case TROUBLE:
                 switch (e) {
-                    // only following event(s) are valid: failer_fixed
                     case Failure_fixed:
-                        transition_to(State.STAND_BY);
+                        transition_to(State.WORKING);
                         break;
                 }
                 break;

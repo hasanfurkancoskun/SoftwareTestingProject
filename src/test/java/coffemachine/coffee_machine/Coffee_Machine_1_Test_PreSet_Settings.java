@@ -19,7 +19,7 @@ public class Coffee_Machine_1_Test_PreSet_Settings {
         assertEquals(settings.validateVoltage(300),false);
     }
     @Test
-    void Coffee_Machine_1_Test_validateWaterWeight() {
+    void Coffee_Machine_2_Test_validateWaterWeight() {
         assertEquals(settings.validateWaterWeight(210),true);
         assertEquals(settings.validateWaterWeight(0),false);
         assertEquals(settings.validateWaterWeight(234),true);
@@ -29,8 +29,8 @@ public class Coffee_Machine_1_Test_PreSet_Settings {
     }
 
     @Test
-    void Coffee_Machine_1_Test_validateCoffeeWeight() {
-        assertEquals(settings.validateCoffeeWeight(210),false);
+    void Coffee_Machine_3_Test_validateCoffeeWeight() {
+        assertEquals(settings.validateCoffeeWeight(55),false);
         assertEquals(settings.validateCoffeeWeight(0),false);
         assertEquals(settings.validateCoffeeWeight(44),true);
         assertEquals(settings.validateCoffeeWeight(50),true);
